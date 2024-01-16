@@ -1,0 +1,11 @@
+# frozen_string_literal: true
+
+source 'https://rubygems.org'
+
+group :nanoc do
+  gem 'nanoc', '~> 4.12'
+  gem 'nanoc-live', '~> 1.0'
+  gem 'nanoc-opal', path: '..'
+  gem 'opal-browser'
+  gem 'adsf'
+end

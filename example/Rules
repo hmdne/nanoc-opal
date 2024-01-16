@@ -1,0 +1,24 @@
+#!/usr/bin/env ruby
+
+require "opal-browser"
+require "nanoc-opal"
+
+compile '/**/*.html' do
+  layout '/default.*'
+
+  if item.identifier =~ '**/index.*'
+    write item.identifier.to_s
+  else
+    write item.identifier.without_ext + '/index.html'
+  end
+end
+
+compile '/script.rb' do
+  filter :opal
+
+  write item.identifier.without_ext + '.js'
+end
+
+passthrough '/**/*'
+
+layout '/**/*', :erb

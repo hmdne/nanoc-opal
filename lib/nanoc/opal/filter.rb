@@ -28,7 +28,7 @@ module Nanoc
 
         builder = ::Opal::Builder.new(**params)
         builder.build_str(string, fn)
-        code = builder.to_s
+        code = builder.to_s + "\n" + builder.source_map.to_data_uri_comment
 
         prefix = File.dirname(item.identifier.to_s)
         prefix += '/' unless prefix.end_with? '/'
